@@ -4,8 +4,15 @@ Shader "Unlit/Mirror" {
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" "Queue"="Geometry-1" }
-
+ 		    Stencil {
+ 		        Ref 0
+ 		        Comp always
+ 		        Pass IncrSat
+				Fail keep
+				Zfail keep
+				}
 		Pass {
+
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
